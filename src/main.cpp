@@ -17,7 +17,7 @@
 #include "monitor/overlay_monitor.h"
 #include "menu/example_menu.h"
 
-#include "hotkey.h"
+#include "hotkey/hotkey.h"
 #include <X11/keysym.h>
 
 static bool menu_visible = false;

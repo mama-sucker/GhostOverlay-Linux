@@ -15,7 +15,7 @@ add_executable(GhostOverlay
     src/main.cpp
     src/monitor/overlay_monitor.cpp
     src/menu/example_menu.cpp
-    src/hotkey.cpp
+    src/hotkey/hotkey.cpp
     ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui_draw.cpp
     ${IMGUI_DIR}/imgui_tables.cpp
