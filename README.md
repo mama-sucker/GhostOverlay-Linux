@@ -79,6 +79,4 @@ external/imgui/         # ImGui source (bundled)
 
 The example menu in `example_menu.cpp` is a starting point. Replace its contents with your own ImGui widgets, tabs, or hooks. The overlay renders every frame unconditionally — integrate your game/overlay logic inside the main loop in `main.cpp`.
 
-## License
 
-ImGui is licensed under the MIT License (see `external/imgui/LICENSE.txt`). The rest of this project is unlicensed unless otherwise noted.
