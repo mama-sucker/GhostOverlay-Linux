@@ -37,7 +37,8 @@ void SetClickThrough(GLFWwindow* window, bool enable) {
     }
 }
 
-// Main application entry point
+
+
 int main(int argc, char** argv) {
     int targetMonitorIndex = 0;
 
@@ -76,11 +77,6 @@ int main(int argc, char** argv) {
 
     SetClickThrough(window, true);
 
-    Display* x11display = glfwGetX11Display();
-    Window root = DefaultRootWindow(x11display);
-    InitHotkeyPolling(x11display, XK_F10);
-
-
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
@@ -90,11 +86,18 @@ int main(int argc, char** argv) {
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 
-        // Toggle menu with Insert key // replaced out to use x11 key grabber?? 
-    if (PollGlobalHotkey()) {
-        menu_visible = !menu_visible;
-        SetClickThrough(window, !menu_visible);
-    }
+        // Toggle menu with Insert key
+        static bool was_pressed = false;
+        if (glfwGetKey(window, GLFW_KEY_F10) == GLFW_PRESS) {
+            if (!was_pressed) {
+                menu_visible = !menu_visible;
+                SetClickThrough(window, !menu_visible);
+            }
+            was_pressed = true;
+        } else {
+            was_pressed = false;
+        }
+
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
